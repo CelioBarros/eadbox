@@ -1,33 +1,46 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
 import { 
   CourseListComponent,
-  CourseCardComponent
+  CourseCardComponent,
+  CourseComponent
 } from './entities';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
   MatListModule,
-  MatCardModule
+  MatCardModule,
+  MatDividerModule,
+  MatTabsModule
 } from '@angular/material';
+
+import {
+  CourseService
+} from './services';
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseListComponent,
-    CourseCardComponent
+    CourseCardComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,
     MatListModule,
-    MatCardModule
+    MatDividerModule,
+    MatCardModule,
+    MatTabsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    CourseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
