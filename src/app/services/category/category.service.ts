@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class CategoryService {
 
-  API = 'http://celiobarros.eadbox.com/api';
+  API = 'https://celiobarros.eadbox.com/api';
 
   constructor(private http: HttpClient) { }
 
