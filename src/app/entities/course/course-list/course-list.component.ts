@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CourseService } from '../../../services';
+import { Component, OnInit, Input } from '@angular/core';
+import { CourseService, CategoryService } from '../../../services';
 @Component({
   selector: 'course-list',
   templateUrl: './course-list.component.html',
@@ -8,22 +8,31 @@ import { CourseService } from '../../../services';
 export class CourseListComponent implements OnInit {
 
   courses = [];
+  @Input() category_slug;
 
   constructor(
-  	private courseService: CourseService
+  	private courseService: CourseService,
+    private categoryService: CategoryService
   ) { }
 
   ngOnInit() {
-  	this.fetchCourses();
+    if (this.category_slug) {
+      this.fetchCategoryCourses();
+    } else {
+      this.fetchCourses();
+    }
   }
 
   fetchCourses() {
   	this.courseService.fetchCourses().subscribe(response => {
   		this.courses = response;
-  		console.log(this.courses);
-  	}, error => {
-  		console.log(error);
   	});
+  }
+
+  fetchCategoryCourses() {
+    this.categoryService.fetchCategoriesCourses(this.category_slug).subscribe(response => {
+      this.courses = response;
+    });
   }
 
 }

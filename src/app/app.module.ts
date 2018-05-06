@@ -20,7 +20,8 @@ import {
 } from '@angular/material';
 
 import {
-  CourseService
+  CourseService,
+  CategoryService
 } from './services';
 
 @NgModule({
@@ -36,10 +37,12 @@ import {
     MatDividerModule,
     MatCardModule,
     MatTabsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
-    CourseService
+    CourseService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })

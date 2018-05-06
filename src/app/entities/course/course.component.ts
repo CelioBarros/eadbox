@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../../services';
 
 @Component({
   selector: 'app-course',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseComponent implements OnInit {
 
-  constructor() { }
+  categories = [{category_slug: null, title: "Todos os cursos"}];
+
+  constructor(
+  	private categoryService: CategoryService
+  ) { }
 
   ngOnInit() {
+  	this.fetchCategories();
+  }
+
+  fetchCategories() {
+  	this.categoryService.fetchCategories().subscribe(response => {
+  		this.categories = this.categories.concat(response);
+  	});
   }
 
 }
