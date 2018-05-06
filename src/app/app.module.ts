@@ -3,16 +3,29 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { CourseListComponent } from './course-list/course-list.component';
 
+import { 
+  CourseListComponent,
+  CourseCardComponent
+} from './entities';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {
+  MatListModule,
+  MatCardModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CourseListComponent
+    CourseListComponent,
+    CourseCardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MatListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
